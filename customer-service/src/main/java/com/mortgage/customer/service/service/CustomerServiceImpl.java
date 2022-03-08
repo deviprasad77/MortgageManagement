@@ -1,6 +1,7 @@
 package com.mortgage.customer.service.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.mortgage.customer.service.repository.MortgageLoanRepository;
@@ -15,6 +16,7 @@ import com.mortgage.customer.service.entity.IncomeAndProperty;
 import com.mortgage.customer.service.entity.MortgageLoan;
 import com.mortgage.customer.service.entity.PropertyDocument;
 import com.mortgage.customer.service.entity.TypesOfMortgageLoans;
+import com.mortgage.customer.service.exception.CustomerNotFoundException;
 import com.mortgage.customer.service.repository.AddressRepository;
 import com.mortgage.customer.service.repository.CustomerRepository;
 import com.mortgage.customer.service.repository.IncomeAndPropertyRepository;
@@ -30,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService{
 	private AddressRepository addressRepository;
 	
 	@Autowired
-	private MortgageLoanRepository MortgageLoanRepository;
+	private MortgageLoanRepository mortgageLoanRepository;
 	
 	@Autowired
 	private IncomeAndPropertyRepository incomeAndPropertyRepository;
@@ -55,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public MortgageLoan saveMortgageLoan(MortgageLoan mortgageLoan) {
-		MortgageLoan saveMortgageLoan = MortgageLoanRepository.save(mortgageLoan);
+		MortgageLoan saveMortgageLoan = mortgageLoanRepository.save(mortgageLoan);
 		return saveMortgageLoan;
 	}
 
@@ -75,6 +77,15 @@ public class CustomerServiceImpl implements CustomerService{
 	public List<TypesOfMortgageLoans> getAllTypesOfLoans() {
 		List<TypesOfMortgageLoans> typesOfMortgageLoans=typesOfMortgageLoansRepository.findAll();
 		return typesOfMortgageLoans;
+	}
+
+	@Override
+	public MortgageLoan getMortgageLoanById(int customerId)  {
+		Optional<MortgageLoan> loan =mortgageLoanRepository.findById(customerId);
+		if(loan.isEmpty()) {
+			throw new CustomerNotFoundException("Sorry! Customer not found with id" + customerId);
+		}
+		return loan.get();
 	}
 	
 	

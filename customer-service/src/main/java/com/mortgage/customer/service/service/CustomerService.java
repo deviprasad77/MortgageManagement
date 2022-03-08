@@ -14,9 +14,14 @@ public interface CustomerService {
 	public Customer saveCustomer(Customer customer);
 	
 	public Address saveCustomerAdress(Address address);
+	
 	public MortgageLoan saveMortgageLoan(MortgageLoan mortgageLoan);
+	
 	public IncomeAndProperty saveIncomeAndProperty(IncomeAndProperty incomeAndProperty);
+	
 	public PropertyDocument savePropertyDocument(PropertyDocument propertyDocument);
 	
 	public List<TypesOfMortgageLoans> getAllTypesOfLoans();
+	
+	public MortgageLoan getMortgageLoanById(int customerId);
 }

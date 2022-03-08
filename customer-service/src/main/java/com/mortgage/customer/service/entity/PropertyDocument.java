@@ -1,5 +1,6 @@
 package com.mortgage.customer.service.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,18 +10,20 @@ import javax.persistence.Table;
 public class PropertyDocument {
 	
 	@Id
-	private int customer_id;
+	@Column(name="customer_id")
+	private int customerId;
 	private int docId;
 	private String docName;
 	private String propertyLoc;
 	private long propertyValue;
 	
 	
-	public int getCustomer_id() {
-		return customer_id;
+	
+	public int getCustomerId() {
+		return customerId;
 	}
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomer_Id(int customerId) {
+		this.customerId = customerId;
 	}
 	public int getDocId() {
 		return docId;

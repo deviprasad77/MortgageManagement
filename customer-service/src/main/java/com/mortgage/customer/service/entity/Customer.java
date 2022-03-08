@@ -15,27 +15,48 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int customer_id;
+	@Column(name="customer_id")
+	private int customer_Id;
+	
 	private String firstName;
+	
 	private String middleName;
+	
 	private String lastName;
+	
 	private String email;
-	private long phone_no;
+	
+	@Column(name="phone_no")
+	private long phoneNo;
+	
 	private String gender;
+	
 	private LocalDate dob;
-	private long adhar_No;
-	private String pan_No;
+	
+	@Column(name="adhar_No")
+	private long adharNo;
+	
+	@Column(name="pan_No")
+	private String panNo;
+	
+	//private String category = "newCustomer";
+	
 
-	private String category = "newCustomer";
 
-	public int getCustomer_id() {
-		return customer_id;
+
+	public int getCustomer_Id() {
+		return customer_Id;
 	}
 
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomer_Id(int customer_Id) {
+		this.customer_Id = customer_Id;
 	}
 
+	/*
+	 * public String getCategory() { return category; }
+	 * 
+	 * public void setCategory(String category) { this.category = category; }
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
@@ -68,12 +89,12 @@ public class Customer {
 		this.email = email;
 	}
 
-	public long getPhone_no() {
-		return phone_no;
+	public long getPhoneNo() {
+		return phoneNo;
 	}
 
-	public void setPhone_no(long phone_no) {
-		this.phone_no = phone_no;
+	public void setPhoneNo(long phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 
 	public String getGender() {
@@ -92,20 +113,20 @@ public class Customer {
 		this.dob = dob;
 	}
 
-	public long getAdhar_No() {
-		return adhar_No;
+	public long getAdharNo() {
+		return adharNo;
 	}
 
-	public void setAdhar_No(long adhar_No) {
-		this.adhar_No = adhar_No;
+	public void setAdharNo(long adharNo) {
+		this.adharNo = adharNo;
 	}
 
-	public String getPan_No() {
-		return pan_No;
+	public String getPanNo() {
+		return panNo;
 	}
 
-	public void setPan_No(String pan_No) {
-		this.pan_No = pan_No;
+	public void setPan_No(String panNo) {
+		this.panNo = panNo;
 	}
 
 }

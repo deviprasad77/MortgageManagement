@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,6 @@ import com.mortgage.customer.service.entity.PropertyDocument;
 import com.mortgage.customer.service.entity.TypesOfMortgageLoans;
 import com.mortgage.customer.service.service.CustomerService;
 
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping
@@ -30,8 +30,8 @@ public class CustomerController {
 	
 	
 	
-	@ApiOperation(value = "Save Customer Details", response = Customer.class, tags = "Enter Customer Details")
-	@PostMapping("/CustomerDetails")
+	//@ApiOperation(value = "Save Customer Details", response = Customer.class, tags = "Enter Customer Details")
+	@PostMapping("/enter CustomerDetails")
 	public ResponseEntity<Customer> customerDetails(@RequestBody Customer customer) {
 
 		Customer newCustomer = customerService.saveCustomer(customer);
@@ -41,16 +41,16 @@ public class CustomerController {
 
 
 	
-	@ApiOperation(value = "Save Address Customer Details", response = Address.class, tags = "Enter AdressDetails")
-	@PostMapping("/LocationDetails")
+	//@ApiOperation(value = "Save Address Customer Details", response = Address.class, tags = "Enter AdressDetails")
+	@PostMapping("/Enter LocationDetails")
 	public ResponseEntity<Address> addressDetails(@RequestBody Address address) {
 
 		Address customerAddress = customerService.saveCustomerAdress(address);
 		ResponseEntity<Address> responseEntity = new ResponseEntity<>(customerAddress, HttpStatus.CREATED);
 		return responseEntity;
 	}
-	@ApiOperation(value = "Mortgage Loan Details", response = MortgageLoan.class, tags = "MortgageLoan")
-	@PostMapping("/MortgageLoan")
+	//@ApiOperation(value = "Mortgage Loan Details", response = MortgageLoan.class, tags = "MortgageLoan")
+	@PostMapping("/Enter MortgageLoan Details")
 	public ResponseEntity<MortgageLoan> mortgageLoan(@RequestBody MortgageLoan mortgageLoan) {
 
 		MortgageLoan newMortgageLoan =customerService.saveMortgageLoan(mortgageLoan);
@@ -60,15 +60,15 @@ public class CustomerController {
 	
 
 	 
-	@ApiOperation(value = "See TypesOfMortgageLoans Details", response = TypesOfMortgageLoans.class, tags = "view TypesOfMortgageLoans")
-	@GetMapping("/all")
+	//@ApiOperation(value = "See TypesOfMortgageLoans Details", response = TypesOfMortgageLoans.class, tags = "view TypesOfMortgageLoans")
+	@GetMapping("/View TypesOfMortgageLoans")
 	public List<TypesOfMortgageLoans> fetchAll(TypesOfMortgageLoans typesOfMortgageLoans) {
 		List<TypesOfMortgageLoans> TypesOfMortgageLoans = customerService.getAllTypesOfLoans();
 		return TypesOfMortgageLoans;
 	}
 	
-	@ApiOperation(value = "Enter IncomeAndProperty Details", response = IncomeAndProperty.class, tags = "Enter IncomeAndProperty Details")
-	@PostMapping("/Income")
+	//@ApiOperation(value = "Enter IncomeAndProperty Details", response = IncomeAndProperty.class, tags = "Enter IncomeAndProperty Details")
+	@PostMapping("/Enter IncomeAndProperty details")
 	public ResponseEntity<IncomeAndProperty> income(@RequestBody IncomeAndProperty incomeAndProperty) {
 		
 		IncomeAndProperty newIncomeAndProperty= customerService.saveIncomeAndProperty(incomeAndProperty);
@@ -77,12 +77,19 @@ public class CustomerController {
 		return responseEntity;
 		
 	}
-	@ApiOperation(value = "Enter PropertyDocument Details", response = PropertyDocument.class, tags = "Enter PropertyDocument Details")
-	@PostMapping("/Property")
+	//@ApiOperation(value = "Enter PropertyDocument Details", response = PropertyDocument.class, tags = "Enter PropertyDocument Details")
+	@PostMapping("/Enter PropertyDocument")
 	public ResponseEntity<PropertyDocument> property(@RequestBody PropertyDocument propertyDocument) {
 		PropertyDocument newPropertyDocument=customerService.savePropertyDocument(propertyDocument);
 ResponseEntity<PropertyDocument> responseEntity = new ResponseEntity<>(newPropertyDocument, HttpStatus.CREATED);
 		
 		return responseEntity;
+	}
+	
+	//@ApiOperation(value = "MortgageLoan Details by id", response = PropertyDocument.class, tags = "Check Loan Status By id")
+	@GetMapping("/getMortgageLoan Status/{cid}")
+	public ResponseEntity<?> fetchMortgageLoanDetails(@PathVariable("cid") int customerId) {
+		MortgageLoan loan = customerService.getMortgageLoanById(customerId);
+		return new ResponseEntity<>(loan, HttpStatus.OK);
 	}
 }
