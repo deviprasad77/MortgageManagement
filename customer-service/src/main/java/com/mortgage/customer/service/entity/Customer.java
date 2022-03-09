@@ -16,7 +16,7 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="customer_id")
-	private int customer_Id;
+	private int customerId;
 	
 	private String firstName;
 	
@@ -38,25 +38,15 @@ public class Customer {
 	
 	@Column(name="pan_No")
 	private String panNo;
-	
-	//private String category = "newCustomer";
-	
 
-
-
-	public int getCustomer_Id() {
-		return customer_Id;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer_Id(int customer_Id) {
-		this.customer_Id = customer_Id;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
-	/*
-	 * public String getCategory() { return category; }
-	 * 
-	 * public void setCategory(String category) { this.category = category; }
-	 */
 	public String getFirstName() {
 		return firstName;
 	}
@@ -125,8 +115,13 @@ public class Customer {
 		return panNo;
 	}
 
-	public void setPan_No(String panNo) {
+	public void setPanNo(String panNo) {
 		this.panNo = panNo;
 	}
+	
+	
 
+
+
+	
 }

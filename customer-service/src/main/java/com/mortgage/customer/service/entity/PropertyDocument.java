@@ -22,7 +22,7 @@ public class PropertyDocument {
 	public int getCustomerId() {
 		return customerId;
 	}
-	public void setCustomer_Id(int customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 	public int getDocId() {

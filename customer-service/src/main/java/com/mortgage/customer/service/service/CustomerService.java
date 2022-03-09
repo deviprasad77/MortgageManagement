@@ -23,5 +23,5 @@ public interface CustomerService {
 	
 	public List<TypesOfMortgageLoans> getAllTypesOfLoans();
 	
-	public MortgageLoan getMortgageLoanById(int customerId);
+
 }

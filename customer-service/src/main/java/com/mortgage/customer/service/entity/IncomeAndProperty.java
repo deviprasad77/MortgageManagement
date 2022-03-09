@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="incomeAndProperty")
+@Table(name="income_and_property;")
 public class IncomeAndProperty {
 	
 	@Id
@@ -16,14 +16,11 @@ public class IncomeAndProperty {
 	private String organizationType;
 	private long income;
 	private int retirementAge;
-
-
-	
 	public int getCustomerId() {
 		return customerId;
 	}
-	public void setCustomer_Id(int customer_Id) {
-		this.customerId = customer_Id;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	public String getTypeOfEmployment() {
 		return typeOfEmployment;
@@ -49,6 +46,9 @@ public class IncomeAndProperty {
 	public void setRetirementAge(int retirementAge) {
 		this.retirementAge = retirementAge;
 	}
+
+
+
 	
 	
 
